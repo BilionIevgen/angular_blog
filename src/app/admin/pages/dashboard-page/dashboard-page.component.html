@@ -1,0 +1,32 @@
+<div class="dashboard" *ngIf="posts?.length; else loading">
+    <input type="text" placeholder="Find post..." [(ngModel)]="search">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let item of posts | searchPosts: search; let idx = index">
+                <td>{{idx + 1}}</td>
+                <td>{{item.author}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.date | date: 'medium':null: 'en'}}</td>
+                <td>
+                    <button class="btn btn-link"
+                        [routerLink]="['/admin','post' ,'edit',item.id]">Open</button>
+                    <a (click)="remove(item.id)">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #loading>
+    loading
+</ng-template>

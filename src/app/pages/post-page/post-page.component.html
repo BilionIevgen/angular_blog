@@ -1,0 +1,15 @@
+<div class="post" *ngIf='post; else loading'>
+    <div class="header">
+        <h1>Title: {{post.title}}</h1>
+        <button routerLink="/" class="btn btn-link">Main page</button>
+    </div>
+    <div class="info">
+        <strong>Author: {{post.author}}</strong>
+        <small>{{post.date | date:'dd.MM.yyyy'}}</small>
+    </div>
+   <quill-view-html [content]='post.text'></quill-view-html>
+</div>
+
+<ng-template #loading>
+    ...Loading
+</ng-template>

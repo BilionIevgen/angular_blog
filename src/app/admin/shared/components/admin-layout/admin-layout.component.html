@@ -1,0 +1,20 @@
+<app-alert>
+    
+</app-alert>
+<nav class="navbar bg-primary">
+    <h1>
+        <span routerLink="/">Angular blog</span>
+    </h1>
+    <ul *ngIf="auth.isAuthenticated()">
+        <li routerLinkActive="active">
+            <a [routerLink]="['/admin','dashboard']">Main</a>
+        </li>
+        <li routerLinkActive="active">
+            <a [routerLink]="['/admin','create']">Create</a>
+        </li>
+        <li>
+            <a href="#" (click)="logout($event)">Logout</a>
+        </li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>
